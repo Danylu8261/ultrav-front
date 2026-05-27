@@ -35,7 +35,6 @@ export default function Products() {
   const { adicionar } = useCarrinho();
 
   useEffect(() => {
-    useEffect(() => {
   fetch("https://ultrav-backend.onrender.com/api/produtos")
     .then((res) => res.json())
     .then((data) => { setProdutos(data); setLoading(false); })
