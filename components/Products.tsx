@@ -35,13 +35,12 @@ export default function Products() {
   const { adicionar } = useCarrinho();
 
   useEffect(() => {
-    "https://ultrav-backend.onrender.com/api/produtos"
-    https://ultrav-backend.onrender.com/api/produtos
-      .then((data) => { setProdutos(data); setLoading(false); })
-      .catch(() => { setErro(true); setLoading(false); });
-  }, []);
-
-  const handleAdicionar = (e: React.MouseEvent, produto: Produto) => {
+    useEffect(() => {
+  fetch("https://ultrav-backend.onrender.com/api/produtos")
+    .then((res) => res.json())
+    .then((data) => { setProdutos(data); setLoading(false); })
+    .catch(() => { setErro(true); setLoading(false); });
+}, []);
     e.preventDefault();
     adicionar({ ...produto, detalhes: [], cor: corMap[produto.marca] ?? "#2c1f0e" });
     setAdicionado(produto.id);
